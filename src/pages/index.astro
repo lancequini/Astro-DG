@@ -10,10 +10,28 @@ import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
 	<head>
 		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
         <style>
-			h1 {text-align: center;}
-			p {text-align: center;}
-			div {text-align: center;}
-		</style>
+		h1 {text-align: center;}
+		p {text-align: center;}
+		div {text-align: center;}
+	        body {
+	            font-family: Arial, sans-serif;
+	            margin-top: 100px;
+	            text-align: center;
+	        }
+	        input[type="text"] {
+	            padding: 10px;
+	            width: 250px;
+	            font-size: 16px;
+	        }
+	        input[type="submit"] {
+	            padding: 10px 20px;
+	            font-size: 16px;
+	        }
+	        #error {
+	            color: red;
+	            margin-top: 20px;
+	        }
+	</style>
 	</head>
 	<body>
 		<Header />
@@ -21,6 +39,31 @@ import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
 			<h1>🧑‍🚀 Hello, Dora!</h1>
 		</main>
         	<body>
+			<h2>Enter Your Access Code</h2>
+			    <form id="codeForm">
+			        <input type="text" id="codeInput" placeholder="Enter code here" required>
+			        <input type="submit" value="Go">
+			    </form>
+			    <div id="error"></div>
+			
+			    <script>
+			        const codeMap = {
+			            "2525": "https://www.google.com",
+			            "016719": "https://durable-chat-template.mail-lance.workers.dev/7Z7lQKqvbqfUyVeBY5RwG",
+			        };
+			
+			        document.getElementById("codeForm").addEventListener("submit", function(event) {
+			            event.preventDefault(); // Prevent form from submitting normally
+			
+			            const code = document.getElementById("codeInput").value.trim();
+			
+			            if (codeMap[code]) {
+			                window.location.href = codeMap[code]; // Redirect to the URL
+			            } else {
+			                document.getElementById("error").textContent = "Invalid code. Please try again.";
+			            }
+			        });
+			    </script>
 			<p><a href="www.damagedgoods.me">Damaged Goods Shop (Coming soon)</a></p>
 			<p><a href="https://chitchatter.im/private/52a30f89-16ec-4533-8329-f100f62ea620">Chatter</a></p>
 		</body>
